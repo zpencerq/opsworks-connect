@@ -44,7 +44,7 @@ module Opsworks
         {stack_id: stack[:stack_id], name: stack[:name]}
       end.sort_by { |option| option[:name] }
 
-      stack = ask?("Stacks", stacks)
+      stack = ask?("Sacks", stacks)
       layers = client.describe_layers(stack_id: stack[:stack_id])[:layers].map do |layer|
         {layer_id: layer[:layer_id], name: layer[:name]}
       end.sort_by { |option| option[:name] }
