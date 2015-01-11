@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'opsworks-connect'
+
+o = Opsworks::Driver.new
+o.connect
