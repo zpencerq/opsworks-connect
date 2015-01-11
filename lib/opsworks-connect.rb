@@ -53,14 +53,14 @@ module Opsworks
 
       layer = ask?("Layers", layers)
       instances = client.describe_instances(layer_id: layer[:layer_id])[:instances]
-        .find_all { |instance| instance[:status] == "online" }
+        .reject { |instance| instance[:public_ip].nil? }
         .map do |instance|
-        {
-          instance_id: instance[:instance_id],
-          name: instance[:hostname],
-          public_ip: instance[:public_ip]
-        }
-      end.sort_by { |option| option[:name] }
+          {
+            instance_id: instance[:instance_id],
+            name: "#{instance[:hostname]} (#{instance[:status]})",
+            public_ip: instance[:public_ip]
+          }
+        end.sort_by { |option| option[:name] }
 
       instance = ask?("Instances", instances)
 
