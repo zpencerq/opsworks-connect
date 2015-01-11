@@ -5,6 +5,8 @@ module Opsworks
   class Driver
     def ask?(question, options)
       answer = nil
+      answer = options[0] if options.length == 1
+
       while answer == nil
         puts "",question
         options
