@@ -16,7 +16,7 @@ module Opsworks
         print "Choose: "
         input = gets.chomp.to_i
         begin
-          answer = options[input]
+          answer = options[input-1]
         rescue
           puts "Invalid choice, please try again.\n"
         end
