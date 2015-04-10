@@ -10,7 +10,7 @@ module Opsworks
       while answer == nil
         puts "",question
         options
-          .each_with_index do |option, idx|
+          .each.with_index(1) do |option, idx|
           puts "[#{idx}] #{option[:name]}"
         end
         print "Choose: "
